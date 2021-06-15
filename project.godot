@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://Weapons/Guns/Weapon.gd"
+} ]
+_global_script_class_icons={
+"Weapon": ""
+}
+
 [application]
 
 config/name="Zombie Wave Game"

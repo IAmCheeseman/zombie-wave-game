@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
+onready var gunPivot = $GunPivot
 
 export var speed = 90
 
@@ -33,3 +34,7 @@ func face_mouse():
 
 	if mousePos.x > 0: sprite.scale.x = -1
 	else: sprite.scale.x = 1
+	gunPivot.look_at(get_global_mouse_position())
+
+
+
