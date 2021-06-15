@@ -6,7 +6,10 @@
 
 [resource]
 script = ExtResource( 1 )
+rarity = 50.0
 damage = 5
 firerate = 0.4
+bulletOffset = 16
+visualOffset = 7
 texture = ExtResource( 2 )
 goldTexture = ExtResource( 3 )
