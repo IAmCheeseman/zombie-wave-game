@@ -11,6 +11,7 @@ var isDead = false
 
 
 func _physics_process(delta):
+	velocity = Vector2.ZERO
 	movement()
 	face_mouse()
 
@@ -19,7 +20,6 @@ func _physics_process(delta):
 
 func movement():
 	# Movement
-	velocity = Vector2.ZERO
 	velocity.y = Input.get_action_strength("S")-Input.get_action_strength("W")
 	velocity.x = Input.get_action_strength("D")-Input.get_action_strength("A")
 	velocity = velocity.normalized()*speed
@@ -30,6 +30,6 @@ func movement():
 
 func face_mouse():
 	var mousePos = get_local_mouse_position()
-	var spriteScale = -round(mousePos.normalized().x)
 
-	sprite.scale.x = spriteScale if spriteScale != 0 else sprite.scale.x
+	if mousePos.x > 0: sprite.scale.x = -1
+	else: sprite.scale.x = 1
