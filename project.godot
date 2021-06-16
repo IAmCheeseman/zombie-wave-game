@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://Weapons/Bullet/Bullet.gd"
+}, {
 "base": "Resource",
 "class": "Weapon",
 "language": "GDScript",
 "path": "res://Weapons/Guns/Weapon.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "",
 "Weapon": ""
 }
 
