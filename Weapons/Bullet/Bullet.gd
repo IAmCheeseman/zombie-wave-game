@@ -11,7 +11,6 @@ var speed:float
 
 func _ready():
 	look_at(global_position+direction)
-	print(direction)
 
 
 func _process(delta):
