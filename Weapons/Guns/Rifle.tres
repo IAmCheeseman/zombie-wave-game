@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Weapons/Guns/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Weapons/Guns/Rifle.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+rarity = 0.5
+damage = 8
+firerate = 0.8
+multishot = 1
+spread = 2
+bulletSpeed = 420
+accuracy = 2.0
+lifetime = 1.0
+bulletOffset = 16
+visualOffset = 6
+texture = ExtResource( 2 )

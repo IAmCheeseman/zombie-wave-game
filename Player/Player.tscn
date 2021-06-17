@@ -54,7 +54,5 @@ autoplay = "Idle"
 anims/Idle = SubResource( 1 )
 anims/Run = SubResource( 2 )
 
-[node name="Gun" type="Node2D" parent="."]
+[node name="Gun" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -6 )
-
-[node name="Gun" parent="Gun" instance=ExtResource( 3 )]

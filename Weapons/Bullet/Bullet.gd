@@ -4,12 +4,16 @@ class_name Bullet
 
 onready var speedTween = $SpeedTween
 onready var scaleTween = $ScaleTween
+onready var timer = $Timer
 
 var direction:Vector2
 var speed:float
+var time:float
 
 
 func _ready():
+	timer.wait_time = time
+	timer.start()
 	look_at(global_position+direction)
 
 

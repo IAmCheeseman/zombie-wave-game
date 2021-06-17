@@ -24,7 +24,7 @@ func _process(delta):
 
 	var spriteToSelf = sprite.global_position-global_position
 	sprite.scale.y = -1 if spriteToSelf.x < 0 else 1
-	get_parent().show_behind_parent = true if spriteToSelf.y < 0 else false
+	show_behind_parent = true if spriteToSelf.y < 0 else false
 
 	sprite.rotation = lerp_angle(sprite.rotation, 0, 6*delta)
 
@@ -33,18 +33,21 @@ func _process(delta):
 
 
 func shoot():
-	var bulletDir = (get_global_mouse_position()-global_position).normalized()
-	bulletDir = bulletDir.rotated(deg2rad(rand_range(-weapon.accuracy, weapon.accuracy)))
+	for i in weapon.multishot:
+		var bulletDir = (get_global_mouse_position()-global_position).normalized()
+		var spread = deg2rad(weapon.spread*i-(weapon.spread*(weapon.multishot-1)/2))
+		bulletDir = bulletDir.rotated(deg2rad(rand_range(-weapon.accuracy, weapon.accuracy))+spread)
 
-	var newBullet = bullet.instance()
-	newBullet.direction = bulletDir
-	newBullet.speed = weapon.bulletSpeed
-	newBullet.global_position = global_position+(bulletDir*weapon.bulletOffset)
+		var newBullet = bullet.instance()
+		newBullet.direction = bulletDir
+		newBullet.speed = weapon.bulletSpeed
+		newBullet.time = weapon.lifetime
+		newBullet.global_position = global_position+(bulletDir*weapon.bulletOffset)
 
-	get_tree().root.get_node("World").add_child(newBullet)
+		get_tree().root.get_node("World").add_child(newBullet)
 
-	sprite.rotation_degrees = -24
-	firerate.start()
+		sprite.rotation_degrees = 24*-sprite.scale.y
+		firerate.start()
 
 
 

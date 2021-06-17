@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://Weapons/Guns/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://Weapons/Guns/Shotgun.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+rarity = 0.5
+damage = 3
+firerate = 0.9
+multishot = 4
+spread = 2
+bulletSpeed = 250
+accuracy = 19.0
+lifetime = 0.55
+bulletOffset = 16
+visualOffset = 8
+texture = ExtResource( 2 )
