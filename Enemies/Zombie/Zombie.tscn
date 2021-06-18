@@ -3,27 +3,9 @@
 [ext_resource path="res://Enemies/Zombie/Zombie.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Shadows/SmallShadow.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/Zombie/Zombie.gd" type="Script" id=3]
+[ext_resource path="res://SoftCollision.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Shader" id=5]
-code = "shader_type canvas_item;
-
-uniform bool isOn = false;
-
-
-void fragment() {
-	vec4 color = texture(TEXTURE, UV);
-	if (isOn) {
-		color = vec4(1.0, 1.0, 1.0, color.a);
-	}
-	COLOR = color;
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
-shader_param/isOn = false
-
-[sub_resource type="Animation" id=1]
-resource_name = "Idle"
+[sub_resource type="Animation" id=3]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -39,8 +21,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Run"
+[sub_resource type="Animation" id=4]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -56,8 +37,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Spit"
+[sub_resource type="Animation" id=5]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
@@ -101,11 +81,11 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.05
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("ScaleHelper/Sprite:material:shader_param/isOn")
+tracks/0/path = NodePath("ScaleHelper/Sprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -114,11 +94,15 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false ]
+"values": [ Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 5.0
+height = 6.0
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 3.0
 height = 6.0
 
 [node name="Zombie" type="KinematicBody2D"]
@@ -129,7 +113,6 @@ speed = 2000
 scale = Vector2( 1.025, 0.975 )
 
 [node name="Sprite" type="Sprite" parent="ScaleHelper"]
-material = SubResource( 6 )
 texture = ExtResource( 1 )
 offset = Vector2( 3.5, -8.5 )
 hframes = 5
@@ -143,12 +126,12 @@ texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Run"
-anims/Idle = SubResource( 1 )
-anims/Run = SubResource( 2 )
-anims/Spit = SubResource( 3 )
+anims/Idle = SubResource( 3 )
+anims/Run = SubResource( 4 )
+anims/Spit = SubResource( 5 )
 
 [node name="Hurt" type="AnimationPlayer" parent="."]
-anims/Hurt = SubResource( 7 )
+anims/Hurt = SubResource( 6 )
 
 [node name="SpitTimer" type="Timer" parent="."]
 one_shot = true
@@ -157,11 +140,23 @@ autostart = true
 [node name="Hurtbox" type="Area2D" parent="." groups=[
 "enemy",
 ]]
+visible = false
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( 0, -8 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
+
+[node name="SoftCollision" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -1 )
+strength = 1
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2( 0, -1 )
+rotation = 1.5708
+shape = SubResource( 8 )
 
 [connection signal="timeout" from="SpitTimer" to="." method="_on_spit_timer_timeout"]
+
+[editable path="SoftCollision"]

@@ -40,7 +40,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "Hurt"
 length = 0.05
 step = 0.01
@@ -57,10 +57,10 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 radius = 4.0
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 4.0
 height = 8.0
 
@@ -71,7 +71,7 @@ speed = 7000
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 5 )
 texture = ExtResource( 1 )
-offset = Vector2( 4.5, -8.5 )
+offset = Vector2( 3.5, -8.5 )
 hframes = 4
 vframes = 4
 
@@ -79,7 +79,6 @@ vframes = 4
 modulate = Color( 1, 1, 1, 0.498039 )
 show_behind_parent = true
 texture = ExtResource( 4 )
-offset = Vector2( 1, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -87,14 +86,14 @@ anims/Idle = SubResource( 1 )
 anims/Run = SubResource( 2 )
 
 [node name="Hurt" type="AnimationPlayer" parent="."]
-anims/Hurt = SubResource( 7 )
+anims/Hurt = SubResource( 3 )
 
 [node name="Gun" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -4 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Hurtbox" type="Area2D" parent="." groups=[
 "player",
@@ -104,7 +103,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( 0, -9 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="IFrames" type="Timer" parent="."]
 wait_time = 0.5

@@ -40,3 +40,4 @@ func _on_Tween_tween_all_completed():
 func _on_area_entered(area):
 	if area.is_in_group(targetGroup):
 		area.get_parent().deal_damage(damage, global_position.direction_to(area.global_position))
+		queue_free()

@@ -1,19 +1,22 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/SpawnManagment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Assets/Ground.png" type="Texture" id=3]
 [ext_resource path="res://World/Assets/DirtPath.tscn" type="PackedScene" id=4]
-[ext_resource path="res://World/Assets/Trees/Tree1.png" type="Texture" id=5]
+[ext_resource path="res://World/Assets/Trees/Tree1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://World/Assets/Bushes/Bush1.png" type="Texture" id=6]
 [ext_resource path="res://World/Collision.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Zombie/Zombie.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/WaveManager.tscn" type="PackedScene" id=10]
 
 [node name="World" type="YSort"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 160, 90 )
+
+[node name="WaveManager" parent="." instance=ExtResource( 10 )]
 
 [node name="SpawnManagment" parent="." instance=ExtResource( 2 )]
 
@@ -37,29 +40,23 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -6
 
 [node name="Trees" type="YSort" parent="Props"]
 
-[node name="Tree1" type="Sprite" parent="Props/Trees"]
-position = Vector2( 44, 33 )
-texture = ExtResource( 5 )
+[node name="Tree1" parent="Props/Trees" instance=ExtResource( 5 )]
+position = Vector2( 37, 49 )
 
-[node name="Tree2" type="Sprite" parent="Props/Trees"]
-position = Vector2( 275, 99 )
-texture = ExtResource( 5 )
+[node name="Tree2" parent="Props/Trees" instance=ExtResource( 5 )]
+position = Vector2( 114, 148 )
 
-[node name="Tree3" type="Sprite" parent="Props/Trees"]
-position = Vector2( 269, 112 )
-texture = ExtResource( 5 )
+[node name="Tree3" parent="Props/Trees" instance=ExtResource( 5 )]
+position = Vector2( 280, 130 )
 
-[node name="Tree4" type="Sprite" parent="Props/Trees"]
-position = Vector2( 256, 104 )
-texture = ExtResource( 5 )
+[node name="Tree4" parent="Props/Trees" instance=ExtResource( 5 )]
+position = Vector2( 267, 123 )
 
-[node name="Tree5" type="Sprite" parent="Props/Trees"]
-position = Vector2( 240, 117 )
-texture = ExtResource( 5 )
+[node name="Tree5" parent="Props/Trees" instance=ExtResource( 5 )]
+position = Vector2( 251, 143 )
 
-[node name="Tree6" type="Sprite" parent="Props/Trees"]
-position = Vector2( 113, 140 )
-texture = ExtResource( 5 )
+[node name="Tree6" parent="Props/Trees" instance=ExtResource( 5 )]
+position = Vector2( 214, 125 )
 
 [node name="Bushes" type="YSort" parent="Props"]
 
@@ -89,12 +86,12 @@ texture = ExtResource( 6 )
 offset = Vector2( 0, -2 )
 
 [node name="Bush9" type="Sprite" parent="Props/Bushes"]
-position = Vector2( 190, 123 )
+position = Vector2( 207, 121 )
 texture = ExtResource( 6 )
 offset = Vector2( 0, -2 )
 
 [node name="Bush10" type="Sprite" parent="Props/Bushes"]
-position = Vector2( 183, 127 )
+position = Vector2( 221, 126 )
 texture = ExtResource( 6 )
 offset = Vector2( 0, -2 )
 
@@ -121,6 +118,66 @@ offset = Vector2( 0, -2 )
 [node name="Enemies" type="YSort" parent="Props"]
 
 [node name="Zombie" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie2" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie3" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie4" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie5" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie6" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie7" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie8" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie9" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie10" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie11" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie12" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie13" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie14" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie15" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie16" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie17" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie18" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie19" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie20" parent="Props/Enemies" instance=ExtResource( 9 )]
+position = Vector2( 257, 54 )
+
+[node name="Zombie21" parent="Props/Enemies" instance=ExtResource( 9 )]
 position = Vector2( 257, 54 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
