@@ -9,6 +9,7 @@ export var speed = 90
 var velocity = Vector2.ZERO
 var isDead = false
 var secondaryWeapon:Weapon
+var health = 20
 
 
 func _ready():

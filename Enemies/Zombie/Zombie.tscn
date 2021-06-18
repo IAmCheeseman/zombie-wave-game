@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemies/Zombie/Zombie.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Shadows/SmallShadow.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/Zombie/Zombie.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Run"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Spit"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScaleHelper/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 21, 22, 23, 24 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ScaleHelper:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 0.9 ), Vector2( 0.9, 1.1 ), Vector2( 1.1, 0.9 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_spit_over"
+} ]
+}
+
+[node name="Zombie" type="KinematicBody2D"]
+script = ExtResource( 3 )
+speed = 2000
+
+[node name="ScaleHelper" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ScaleHelper"]
+texture = ExtResource( 1 )
+offset = Vector2( 3.5, -8.5 )
+hframes = 5
+vframes = 5
+frame = 24
+
+[node name="SmallShadow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+show_behind_parent = true
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Run"
+anims/Idle = SubResource( 1 )
+anims/Run = SubResource( 2 )
+anims/Spit = SubResource( 3 )
+
+[node name="SpitTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SpitTimer" to="." method="_on_spit_timer_timeout"]
