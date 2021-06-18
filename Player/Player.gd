@@ -3,6 +3,8 @@ extends KinematicBody2D
 onready var sprite = $Sprite
 onready var anim = $AnimationPlayer
 onready var gun = $Gun
+onready var iframes = $IFrames
+onready var hurtAnim = $Hurt
 
 export var speed = 90
 
@@ -50,3 +52,19 @@ func _input(event):
 		var currentWeapon = gun.weapon.duplicate()
 		gun.weapon = secondaryWeapon.duplicate()
 		secondaryWeapon = currentWeapon
+
+
+func deal_damage(amount:float, dir:Vector2):
+	if iframes.is_stopped():
+		health -= amount
+		position += dir
+		hurtAnim.play("Hurt")
+		iframes.start()
+		if health <= 0:
+			queue_free()
+
+
+
+
+
+

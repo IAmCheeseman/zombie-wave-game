@@ -1,6 +1,8 @@
 extends Area2D
 class_name Bullet
 
+export var targetGroup = "player"
+export var look = true
 
 onready var speedTween = $SpeedTween
 onready var scaleTween = $ScaleTween
@@ -8,13 +10,14 @@ onready var timer = $Timer
 
 var direction:Vector2
 var speed:float
+var damage:float
 var time:float
 
 
 func _ready():
 	timer.wait_time = time
 	timer.start()
-	look_at(global_position+direction)
+	if look: look_at(global_position+direction)
 
 
 func _process(delta):
@@ -34,3 +37,6 @@ func _on_Tween_tween_all_completed():
 	queue_free()
 
 
+func _on_area_entered(area):
+	if area.is_in_group(targetGroup):
+		area.get_parent().deal_damage(damage, global_position.direction_to(area.global_position))

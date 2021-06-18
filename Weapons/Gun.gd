@@ -42,6 +42,7 @@ func shoot():
 		newBullet.direction = bulletDir
 		newBullet.speed = weapon.bulletSpeed
 		newBullet.time = weapon.lifetime
+		newBullet.damage = weapon.damage
 		newBullet.global_position = global_position+(bulletDir*weapon.bulletOffset)
 
 		get_tree().root.get_node("World").add_child(newBullet)
