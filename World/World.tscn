@@ -133,52 +133,19 @@ position = Vector2( 257, 54 )
 position = Vector2( 257, 54 )
 
 [node name="Zombie6" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
+position = Vector2( 30, 97 )
 
 [node name="Zombie7" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
+position = Vector2( 30, 97 )
 
 [node name="Zombie8" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
+position = Vector2( 30, 97 )
 
 [node name="Zombie9" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
+position = Vector2( 30, 97 )
 
 [node name="Zombie10" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie11" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie12" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie13" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie14" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie15" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie16" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie17" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie18" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie19" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie20" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
-
-[node name="Zombie21" parent="Props/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 257, 54 )
+position = Vector2( 30, 97 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

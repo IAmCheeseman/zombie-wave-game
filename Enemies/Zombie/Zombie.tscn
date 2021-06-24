@@ -137,6 +137,10 @@ anims/Hurt = SubResource( 6 )
 one_shot = true
 autostart = true
 
+[node name="ChaseTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [node name="Hurtbox" type="Area2D" parent="." groups=[
 "enemy",
 ]]
@@ -158,5 +162,6 @@ rotation = 1.5708
 shape = SubResource( 8 )
 
 [connection signal="timeout" from="SpitTimer" to="." method="_on_spit_timer_timeout"]
+[connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]
 
 [editable path="SoftCollision"]

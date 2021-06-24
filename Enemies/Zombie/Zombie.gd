@@ -81,10 +81,5 @@ func deal_damage(amount:float, dir:Vector2):
 		queue_free()
 
 
-
-
-
-
-
-
-
+func _on_chase_timer_timeout():
+	get_new_target()
