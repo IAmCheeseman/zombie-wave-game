@@ -56,6 +56,7 @@ func _input(event):
 
 func deal_damage(amount:float, dir:Vector2):
 	if iframes.is_stopped():
+		var sm = ScreenshakeManager.new(2, 5, .05, .05)
 		health -= amount
 		position += dir
 		hurtAnim.play("Hurt")

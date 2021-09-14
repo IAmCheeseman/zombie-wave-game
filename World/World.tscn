@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/SpawnManagment.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Assets/Ground.png" type="Texture" id=3]
 [ext_resource path="res://World/Assets/DirtPath.tscn" type="PackedScene" id=4]
@@ -8,8 +8,9 @@
 [ext_resource path="res://World/Assets/Bushes/Bush1.png" type="Texture" id=6]
 [ext_resource path="res://World/Collision.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Enemies/Zombie/Zombie.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Entities/Enemies/Zombie/Zombie.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/WaveManager.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Weapons/DroppedItem.tscn" type="PackedScene" id=11]
 
 [node name="World" type="YSort"]
 
@@ -150,3 +151,6 @@ position = Vector2( 30, 97 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="DroppedItem" parent="." instance=ExtResource( 11 )]
+position = Vector2( 115.52, 60.6345 )
