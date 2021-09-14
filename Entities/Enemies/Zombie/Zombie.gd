@@ -10,7 +10,7 @@ onready var hurtAnim = $Hurt
 onready var softCollision = $SoftCollision
 
 export var speed = 80
-export var damage = 5
+export var damage = 1
 
 var vel = Vector2.ZERO
 var health = 15
@@ -18,6 +18,8 @@ var state = CHASE
 var targetPosition = Vector2.ZERO
 
 var bullet = preload("res://Weapons/Bullet/EnemyBullet.tscn")
+
+signal death
 
 
 func _ready():
@@ -78,6 +80,7 @@ func deal_damage(amount:float, dir:Vector2):
 	position += dir
 	hurtAnim.play("Hurt")
 	if health <= 0:
+		emit_signal("death", self)
 		queue_free()
 
 

@@ -11,11 +11,15 @@ export var speed = 90
 var velocity = Vector2.ZERO
 var isDead = false
 var secondaryWeapon:Weapon
-var health = 20
+var maxHealth = 5
+var health = 5
+
+signal hurt(health, maxHealth)
 
 
 func _ready():
 	randomize()
+	emit_signal("hurt", health, maxHealth)
 
 
 func _physics_process(delta):
@@ -56,7 +60,13 @@ func _input(event):
 
 func deal_damage(amount:float, dir:Vector2):
 	if iframes.is_stopped():
-		var sm = ScreenshakeManager.new(2, 5, .05, .05)
+		# Screenshake
+		var sm = ScreenshakeManager.new(self)
+		sm.start_ss(2, 5, .05, .05)
+		sm.queue_free()
+		
+		emit_signal("hurt", health-1, maxHealth)
+		
 		health -= amount
 		position += dir
 		hurtAnim.play("Hurt")
