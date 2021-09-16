@@ -11,7 +11,8 @@ var bullet = preload("res://Weapons/Bullet/Bullet.tscn")
 func setup_weapon(value):
 	weapon = value
 	sprite.position.x = weapon.visualOffset
-	sprite.texture = weapon.texture
+	if weapon.isGold: sprite.texture = weapon.goldTexture
+	else: sprite.texture = weapon.texture
 	firerate.wait_time = weapon.firerate
 
 
@@ -38,17 +39,20 @@ func shoot():
 		var spread = deg2rad(weapon.spread*i-(weapon.spread*(weapon.multishot-1)/2))
 		bulletDir = bulletDir.rotated(deg2rad(rand_range(-weapon.accuracy, weapon.accuracy))+spread)
 
+		var mod = 1.5 if weapon.isGold else 1
+		var dMod = .75 if weapon.isGold else 1
+
 		var newBullet = bullet.instance()
 		newBullet.direction = bulletDir
 		newBullet.speed = weapon.bulletSpeed
-		newBullet.time = weapon.lifetime
-		newBullet.damage = weapon.damage
+		newBullet.time = weapon.lifetime*mod
+		newBullet.damage = weapon.damage*mod
 		newBullet.global_position = global_position+(bulletDir*weapon.bulletOffset)
 
 		get_tree().root.get_node("World").add_child(newBullet)
 
 		sprite.rotation_degrees = 24*-sprite.scale.y
-		firerate.start()
+		firerate.start(weapon.firerate*dMod)
 
 
 

@@ -62,7 +62,9 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 script = ExtResource( 2 )
 speed = 7000
 

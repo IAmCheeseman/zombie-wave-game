@@ -13,3 +13,5 @@ export var bulletOffset = 16
 export var visualOffset = 12
 export var texture:StreamTexture
 export var goldTexture:StreamTexture
+
+var isGold = false

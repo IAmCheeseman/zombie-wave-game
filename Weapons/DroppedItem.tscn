@@ -3,6 +3,7 @@
 [ext_resource path="res://Weapons/DroppedItem.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 3.32008
 
 [node name="DroppedItem" type="Area2D"]
 script = ExtResource( 1 )
@@ -12,3 +13,5 @@ items = [ "res://Weapons/Guns/Pistol.tres", "res://Weapons/Guns/Rifle.tres", "re
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
