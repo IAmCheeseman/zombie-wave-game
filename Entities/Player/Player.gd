@@ -72,7 +72,8 @@ func deal_damage(amount:float, dir:Vector2) -> void:
 		hurtAnim.play("Hurt")
 		iframes.start()
 		if health <= 0:
-			queue_free()
+			hide()
+			speed = 0
 
 
 

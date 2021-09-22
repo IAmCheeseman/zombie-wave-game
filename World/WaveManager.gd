@@ -7,7 +7,6 @@ onready var enemyHolder:Node2D = get_node(enemyHolderP)
 
 var enemyCount = 5
 var currentAliveEnemies = 0
-var wave = 1
 
 
 func _ready() -> void:
@@ -22,11 +21,11 @@ func spawn_enemies() -> void:
 		newZombie.position = Vector2(rand_range(0, limits.end.x), rand_range(0, limits.end.y))
 		enemyHolder.call_deferred("add_child", newZombie)
 	currentAliveEnemies = enemyCount
-	enemyCount *= 1.25
+	enemyCount *= 1.10
 
 
 func _on_enemy_death(_enemy:Node2D) -> void:
 	currentAliveEnemies -= 1
 	if currentAliveEnemies <= 0:
 		spawn_enemies()
-		wave += 1
+		GameManager.wave += 1

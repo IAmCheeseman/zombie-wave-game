@@ -8,12 +8,13 @@
 script = ExtResource( 1 )
 rarity = 0.5
 damage = 2
+magazineSize = 25
 firerate = 0.1
 multishot = 1
 spread = 2
 bulletSpeed = 320
-accuracy = 24.0
-lifetime = 0.225
+accuracy = 12.0
+lifetime = 1.0
 bulletOffset = 16
 visualOffset = 7
 texture = ExtResource( 2 )

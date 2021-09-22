@@ -8,6 +8,7 @@
 script = ExtResource( 1 )
 rarity = 0.5
 damage = 8
+magazineSize = 5
 firerate = 0.8
 multishot = 1
 spread = 2

@@ -66,7 +66,7 @@ tracks/0/keys = {
 "player",
 ]]
 script = ExtResource( 2 )
-speed = 7000
+speed = 9625
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 4 )

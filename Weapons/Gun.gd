@@ -6,7 +6,9 @@ onready var sprite = $Sprite
 onready var firerate = $Firerate
 
 var bullet = preload("res://Weapons/Bullet/Bullet.tscn")
+var ammoLeft = 0
 
+signal shot
 
 func setup_weapon(value):
 	weapon = value
@@ -14,6 +16,8 @@ func setup_weapon(value):
 	if weapon.isGold: sprite.texture = weapon.goldTexture
 	else: sprite.texture = weapon.texture
 	firerate.wait_time = weapon.firerate
+	ammoLeft = weapon.magazineSize
+	emit_signal("shot", self)
 
 
 func _ready():
@@ -29,7 +33,7 @@ func _process(delta):
 
 	sprite.rotation = lerp_angle(sprite.rotation, 0, 6*delta)
 
-	if firerate.is_stopped() and Input.is_mouse_button_pressed(1):
+	if firerate.is_stopped() and Input.is_mouse_button_pressed(1) and ammoLeft > 0:
 		shoot()
 
 
@@ -53,6 +57,10 @@ func shoot():
 
 		sprite.rotation_degrees = 24*-sprite.scale.y
 		firerate.start(weapon.firerate*dMod)
+	ammoLeft -= 1
+	emit_signal("shot", self)
+	if ammoLeft <= 0:
+		sprite.texture = null
 
 
 

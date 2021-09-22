@@ -1,11 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/PrStart.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/Heart.png" type="Texture" id=2]
 [ext_resource path="res://UI/UI.gd" type="Script" id=3]
 [ext_resource path="res://UI/HeartEmpty.png" type="Texture" id=4]
+[ext_resource path="res://UI/AmmoEmpyt.png" type="Texture" id=5]
+[ext_resource path="res://UI/AmmoFull.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 8
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -22,9 +30,10 @@ __meta__ = {
 [node name="HealthBar" type="TextureRect" parent="."]
 margin_left = 2.0
 margin_top = 3.0
-margin_right = 50.0
-margin_bottom = 8.0
+margin_right = 32.0
+margin_bottom = 13.0
 rect_min_size = Vector2( 0, 8 )
+rect_rotation = 2.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
@@ -34,21 +43,57 @@ __meta__ = {
 
 [node name="BarUnder" type="TextureRect" parent="HealthBar"]
 show_behind_parent = true
-margin_left = -0.13019
-margin_top = 1.01793
-margin_right = 39.8698
-margin_bottom = 9.01793
+margin_left = -0.145422
+margin_top = 2.18609
+margin_right = 39.8546
+margin_bottom = 11.1861
 rect_min_size = Vector2( 0, 8 )
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 2
 
+[node name="AmmoBar" type="TextureRect" parent="."]
+margin_left = 2.0
+margin_top = 15.0
+margin_right = 9.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 0, 8 )
+rect_rotation = 2.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarUnder" type="TextureRect" parent="AmmoBar"]
+visible = false
+show_behind_parent = true
+margin_top = 1.0
+margin_right = 35.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 0, 8 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="AmmoBar"]
+margin_left = 8.39931
+margin_top = 1.06272
+margin_right = 40.3993
+margin_bottom = 9.06272
+custom_fonts/font = SubResource( 1 )
+text = ":5/8"
+
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -28.0
-margin_right = 28.0
+margin_left = -156.129
+margin_top = 26.971
+margin_right = -100.129
+margin_bottom = -142.029
+rect_rotation = 2.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -58,7 +103,16 @@ margin_top = -1.0
 margin_right = 56.0
 margin_bottom = 10.57
 rect_min_size = Vector2( 0, 11.57 )
-custom_fonts/font = SubResource( 1 )
-text = "Wave: 1"
-align = 1
+custom_fonts/font = SubResource( 2 )
+text = "Wave:1"
+valign = 2
+
+[node name="Score" type="Label" parent="HBoxContainer"]
+margin_top = 15.0
+margin_right = 56.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 11.57 )
+custom_fonts/font = SubResource( 2 )
+text = "Score:
+100"
 valign = 2

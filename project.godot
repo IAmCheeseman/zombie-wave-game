@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Camera/ScreenshakeManager.gd"
 }, {
+"base": "Reference",
+"class": "Utils",
+"language": "GDScript",
+"path": "res://Utils.gd"
+}, {
 "base": "Resource",
 "class": "Weapon",
 "language": "GDScript",
@@ -27,6 +32,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Bullet": "",
 "ScreenshakeManager": "",
+"Utils": "",
 "Weapon": ""
 }
 
@@ -34,6 +40,10 @@ _global_script_class_icons={
 
 config/name="Zombie Wave Game"
 run/main_scene="res://World/World.tscn"
+
+[autoload]
+
+GameManager="*res://GameManager.gd"
 
 [display]
 

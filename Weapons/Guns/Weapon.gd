@@ -3,6 +3,7 @@ class_name Weapon
 
 export(float, 0, 1) var rarity = .5
 export var damage = 5
+export var magazineSize = 8
 export var firerate = .4
 export var multishot = 1
 export var spread = 2

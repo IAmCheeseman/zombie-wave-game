@@ -81,6 +81,7 @@ func deal_damage(amount:float, dir:Vector2):
 	hurtAnim.play("Hurt")
 	if health <= 0:
 		emit_signal("death", self)
+		GameManager.score += 100
 		queue_free()
 
 
