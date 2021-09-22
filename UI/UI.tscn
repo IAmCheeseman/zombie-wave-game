@@ -22,18 +22,18 @@ font_data = ExtResource( 1 )
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_rotation = 0.882385
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HealthBar" type="TextureRect" parent="."]
-margin_left = 2.0
-margin_top = 3.0
-margin_right = 32.0
-margin_bottom = 13.0
+margin_left = 1.22529
+margin_top = 3.06322
+margin_right = 41.2253
+margin_bottom = 13.0632
 rect_min_size = Vector2( 0, 8 )
-rect_rotation = 2.0
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
@@ -53,12 +53,11 @@ expand = true
 stretch_mode = 2
 
 [node name="AmmoBar" type="TextureRect" parent="."]
-margin_left = 2.0
-margin_top = 15.0
-margin_right = 9.0
-margin_bottom = 23.0
+margin_left = 1.07213
+margin_top = 16.5948
+margin_right = 8.07213
+margin_bottom = 24.5948
 rect_min_size = Vector2( 0, 8 )
-rect_rotation = 2.0
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 2
@@ -86,21 +85,17 @@ custom_fonts/font = SubResource( 1 )
 text = ":5/8"
 
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -156.129
-margin_top = 26.971
-margin_right = -100.129
-margin_bottom = -142.029
-rect_rotation = 2.0
+margin_left = 3.06322
+margin_top = 28.5948
+margin_right = 323.063
+margin_bottom = 62.5948
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 margin_top = -1.0
-margin_right = 56.0
+margin_right = 320.0
 margin_bottom = 10.57
 rect_min_size = Vector2( 0, 11.57 )
 custom_fonts/font = SubResource( 2 )
@@ -109,7 +104,7 @@ valign = 2
 
 [node name="Score" type="Label" parent="HBoxContainer"]
 margin_top = 15.0
-margin_right = 56.0
+margin_right = 320.0
 margin_bottom = 34.0
 rect_min_size = Vector2( 0, 11.57 )
 custom_fonts/font = SubResource( 2 )

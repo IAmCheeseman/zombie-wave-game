@@ -13,7 +13,10 @@ signal shot
 func setup_weapon(value):
 	weapon = value
 	sprite.position.x = weapon.visualOffset
-	if weapon.isGold: sprite.texture = weapon.goldTexture
+	if weapon.isGold:
+		sprite.texture = weapon.goldTexture
+		weapon.magazineSize *= 1.5
+		weapon.magazineSize = ceil(weapon.magazineSize)
 	else: sprite.texture = weapon.texture
 	firerate.wait_time = weapon.firerate
 	ammoLeft = weapon.magazineSize
@@ -43,7 +46,9 @@ func shoot():
 		var spread = deg2rad(weapon.spread*i-(weapon.spread*(weapon.multishot-1)/2))
 		bulletDir = bulletDir.rotated(deg2rad(rand_range(-weapon.accuracy, weapon.accuracy))+spread)
 
+# warning-ignore:incompatible_ternary
 		var mod = 1.5 if weapon.isGold else 1
+# warning-ignore:incompatible_ternary
 		var dMod = .75 if weapon.isGold else 1
 
 		var newBullet = bullet.instance()
